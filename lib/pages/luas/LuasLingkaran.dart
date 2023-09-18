@@ -7,36 +7,35 @@ import 'package:luas_bangun_datar/utils/MyElevatedButton.dart';
 import 'package:luas_bangun_datar/utils/MyText.dart';
 import 'package:luas_bangun_datar/utils/MyTextField.dart';
 
-class LuasPersegi extends StatefulWidget {
-  const LuasPersegi({super.key});
+class LuasLingkaran extends StatefulWidget {
+  const LuasLingkaran({super.key});
 
   @override
-  State<LuasPersegi> createState() => _LuasPersegiState();
+  State<LuasLingkaran> createState() => _LuasLingkaranState();
 }
 
-class _LuasPersegiState extends State<LuasPersegi> {
-  TextEditingController? ctrSisi = TextEditingController();
-  final LuasController controller = Get.put(LuasController());
+class _LuasLingkaranState extends State<LuasLingkaran> {
+  TextEditingController? ctrJariJari = TextEditingController();
+  final LuasController controller = Get.put(LuasController()); 
 
   Widget myColumn() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MyText(value: "Persegi", fontSize: 30),
-        const MyText(value: "sisi x sisi", fontSize: 16),
+        const MyText(value: "π x r²", fontSize: 16),
         const SizedBox(width: double.infinity, height: 10),
-        MyTextField(label: "sisi (cm)", ctr: ctrSisi!),
+        MyTextField(label: "jari-jari (cm)", ctr: ctrJariJari!),
         const MyText(value: "Hasil :", fontSize: 18, fontWeight: FontWeight.bold),
         Expanded(
           child: Obx(
-            () => MyText(value: "${controller.luasPersegi.value}cm²")
-          ),
+            () => MyText(value: "${controller.luasLingkaran.value.toStringAsFixed(2)}cm²")
+          )
         ),
         MyElevatedButton(
           buttonText: "Hitung",
           onPressed: () {
-            ctrSisi!.text.isNotEmpty ?
-            controller.hitungLuasPersegi(double.parse(ctrSisi!.text.toString())) :
+            ctrJariJari!.text.isNotEmpty ?
+            controller.hitungLuasLingkaran(double.parse(ctrJariJari!.text.toString())) :
             MyAlertDialog().showEmptyDialog(context);
           }
         ),
@@ -47,9 +46,16 @@ class _LuasPersegiState extends State<LuasPersegi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.secondaryColor,
+        title: const MyText(value: "Lingkaran", fontSize: 26, fontWeight: FontWeight.bold, color: Colors.white),
+        leading: const BackButton(
+          color: Colors.white,
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: myColumn()
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+        child: myColumn(),
       ),
       backgroundColor: AppColors.backgroundColor,
     );
