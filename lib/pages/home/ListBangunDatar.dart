@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luas_bangun_datar/pages/luas/LuasJajarGenjang.dart';
-import 'package:luas_bangun_datar/pages/luas/LuasLingkaran.dart';
-import 'package:luas_bangun_datar/pages/luas/LuasPersegi.dart';
-import 'package:luas_bangun_datar/pages/luas/LuasPersegiPanjang.dart';
-import 'package:luas_bangun_datar/pages/luas/LuasSegitiga.dart';
 import 'package:luas_bangun_datar/utils/MyGridViewButton.dart';
 
 class ListBangunDatar extends StatelessWidget {
@@ -15,27 +10,27 @@ class ListBangunDatar extends StatelessWidget {
       MyGridViewButton(
         text: "Lingkaran",
         icon: "assets/svgs/lingkaran.svg",
-        onTab: () => Get.to(const LuasLingkaran())
+        onTab: () => Get.toNamed("/lingkaran")
       ),
       MyGridViewButton(
         text: "Persegi",
         icon: "assets/svgs/persegi.svg",
-        onTab: () => Get.to(const LuasPersegi())
+        onTab: () => Get.toNamed("/persegi")
       ),
       MyGridViewButton(
         text: "Persegi panjang",
         icon: "assets/svgs/persegi_panjang.svg",
-        onTab: () => Get.to(const LuasPersegiPanjang())
+        onTab: () => Get.toNamed("/persegi-panjang")
       ),
       MyGridViewButton(
         text: "Segitiga",
         icon: "assets/svgs/segitiga.svg",
-        onTab: () => Get.to(const LuasSegitiga())
+        onTab: () => Get.toNamed("/segitiga")
       ),
       MyGridViewButton(
         text: "Jajar genjang",
         icon: "assets/svgs/jajar_genjang.svg",
-        onTab: () => Get.to(const LuasJajarGenjang())
+        onTab: () => Get.toNamed("/jajar-genjang")
       ),
     ];
   }
